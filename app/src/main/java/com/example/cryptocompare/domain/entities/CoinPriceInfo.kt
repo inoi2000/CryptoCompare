@@ -1,9 +1,9 @@
-package com.example.cryptocompare.pojo
+package com.example.cryptocompare.domain.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.cryptocompare.api.ApiFactory.BASE_IMAGE_URL
-import com.example.cryptocompare.utils.convertTimestampToTime
+import com.example.cryptocompare.data.api.ApiFactory.BASE_IMAGE_URL
+import com.example.cryptocompare.presentation.utils.convertTimestampToTime
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 

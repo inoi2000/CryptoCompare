@@ -1,17 +1,16 @@
-package com.example.cryptocompare
+package com.example.cryptocompare.presentation.views
 
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.example.cryptocompare.api.ApiFactory
-import com.example.cryptocompare.database.AppDatabase
-import com.example.cryptocompare.pojo.CoinPriceInfo
-import com.example.cryptocompare.pojo.CoinPriceInfoRawData
+import com.example.cryptocompare.data.api.ApiFactory
+import com.example.cryptocompare.data.database.AppDatabase
+import com.example.cryptocompare.domain.entities.CoinPriceInfo
+import com.example.cryptocompare.domain.entities.CoinPriceInfoRawData
 import com.google.gson.Gson
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
-import java.util.concurrent.TimeUnit
 
 class CoinViewModel(application: Application) : AndroidViewModel(application) {
     private val db = AppDatabase.getInstance(application)

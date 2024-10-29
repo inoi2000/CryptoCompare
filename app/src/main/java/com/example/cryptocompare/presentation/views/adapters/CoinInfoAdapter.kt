@@ -1,4 +1,4 @@
-package com.example.cryptocompare.adapters
+package com.example.cryptocompare.presentation.views.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,9 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cryptocompare.R
-import com.example.cryptocompare.databinding.ActivityCoinDetailBinding
-import com.example.cryptocompare.databinding.ItemCoinInfoBinding
-import com.example.cryptocompare.pojo.CoinPriceInfo
+import com.example.cryptocompare.domain.entities.CoinPriceInfo
 import com.squareup.picasso.Picasso
 
 class CoinInfoAdapter(private val context: Context) : RecyclerView.Adapter<CoinInfoAdapter.CoinInfoViewHolder>() {
