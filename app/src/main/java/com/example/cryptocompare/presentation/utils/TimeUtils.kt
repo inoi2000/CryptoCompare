@@ -1,4 +1,4 @@
-package com.example.cryptocompare.utils
+package com.example.cryptocompare.presentation.utils
 
 import java.sql.Timestamp
 import java.text.SimpleDateFormat

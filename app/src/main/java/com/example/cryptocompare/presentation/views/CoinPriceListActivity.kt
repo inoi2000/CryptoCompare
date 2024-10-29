@@ -1,13 +1,12 @@
-package com.example.cryptocompare
+package com.example.cryptocompare.presentation.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.cryptocompare.adapters.CoinInfoAdapter
-import com.example.cryptocompare.database.AppDatabase
+import com.example.cryptocompare.presentation.views.adapters.CoinInfoAdapter
 import com.example.cryptocompare.databinding.ActivityCoinPriceListBinding
-import com.example.cryptocompare.pojo.CoinPriceInfo
+import com.example.cryptocompare.domain.entities.CoinPriceInfo
 
 class CoinPriceListActivity : AppCompatActivity() {
     private lateinit var binding : ActivityCoinPriceListBinding

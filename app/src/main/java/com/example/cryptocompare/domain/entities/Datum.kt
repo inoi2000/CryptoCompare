@@ -1,4 +1,4 @@
-package com.example.cryptocompare.pojo
+package com.example.cryptocompare.domain.entities
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
@@ -6,5 +6,5 @@ import com.google.gson.annotations.SerializedName
 data class Datum (
     @SerializedName("CoinInfo")
     @Expose
-    val coinInfo:CoinInfo? = null
+    val coinInfo: CoinInfo? = null
 )

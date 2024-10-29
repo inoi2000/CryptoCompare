@@ -1,4 +1,4 @@
-package com.example.cryptocompare
+package com.example.cryptocompare.presentation.views
 
 import android.content.Context
 import android.content.Intent
