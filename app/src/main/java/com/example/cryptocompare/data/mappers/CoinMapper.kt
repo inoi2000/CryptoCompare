@@ -7,7 +7,7 @@ import com.example.cryptocompare.domain.entities.CoinInfo
 import com.example.cryptocompare.domain.entities.Currency
 import com.google.gson.Gson
 
-class CoinInfoMapper {
+class CoinMapper {
     fun mapEntityToDbModel(entity: CoinInfo): CoinInfoDbModel =
         CoinInfoDbModel(
             name = entity.name,

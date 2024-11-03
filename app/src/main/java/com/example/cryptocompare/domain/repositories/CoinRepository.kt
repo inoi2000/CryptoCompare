@@ -1,8 +1,9 @@
 package com.example.cryptocompare.domain.repositories
 
 import com.example.cryptocompare.domain.entities.CoinInfo
+import com.example.cryptocompare.domain.entities.Currency
 
 interface CoinRepository {
-    suspend fun getCoinInfoList(): List<CoinInfo>
-    suspend fun getCoinPrice(): CoinInfo
+    suspend fun getCoinTopList(currency: Currency, limit: Int): List<CoinInfo>
+    suspend fun getCoinInfo(currency: Currency, coinName: String): CoinInfo
 }
