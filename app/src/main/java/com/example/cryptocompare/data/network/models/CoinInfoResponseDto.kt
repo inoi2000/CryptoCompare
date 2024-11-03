@@ -1,13 +1,11 @@
 package com.example.cryptocompare.data.network.models
 
+import com.google.gson.JsonObject
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class CoinInfoContainerDto(
+data class CoinInfoResponseDto(
     @SerializedName("RAW")
     @Expose
-    val coinInfo: CoinInfoDto,
-    @SerializedName("DISPLAY")
-    @Expose
-    val coinInfoDisplay: CoinInfoDto
+    val coinInfoJson: JsonObject
 )

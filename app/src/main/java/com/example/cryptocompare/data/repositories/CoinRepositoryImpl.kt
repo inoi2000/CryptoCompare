@@ -16,14 +16,19 @@ class CoinRepositoryImpl : CoinRepository {
         currency: Currency,
         limit: Int
     ): List<CoinInfo> {
-        val response = ApiFactory.apiService.getTopCoinsInfo(limit = limit)
-        return coinParser.parseJsonToCoinInfoDtoList(
+        val response =
+            ApiFactory.apiService.getTopCoinsInfo(limit = limit, tSym = currency.name)
+        return coinParser.parseJsonArrayToCoinInfoDtoList(
             response.coinTopListJsonArray,
             currency
         ).map { coinMapper.mapDtoToEntity(it) }
     }
 
     override suspend fun getCoinInfo(currency: Currency, coinName: String): CoinInfo {
-        TODO("Not yet implemented")
+        val response =
+            ApiFactory.apiService.getFullCoinInfo(fSyms = coinName, tSyms = currency.name)
+        val coinInfoDto =
+            coinParser.parseJsonToCoinInfoDto(response.coinInfoJson, currency, coinName)
+        return coinMapper.mapDtoToEntity(coinInfoDto)
     }
 }

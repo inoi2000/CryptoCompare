@@ -2,7 +2,6 @@ package com.example.cryptocompare.data.mappers
 
 import com.example.cryptocompare.data.database.models.CoinInfoDbModel
 import com.example.cryptocompare.data.network.models.CoinInfoDto
-import com.example.cryptocompare.data.network.models.CoinTopItemJsonContainerDto
 import com.example.cryptocompare.domain.entities.CoinInfo
 import com.example.cryptocompare.domain.entities.Currency
 import com.google.gson.Gson
@@ -136,16 +135,4 @@ class CoinMapper {
             totalTopTierVolume24Hour = dto.totalTopTierVolume24Hour,
             totalTopTierVolume24HourTo = dto.totalTopTierVolume24HourTo
         )
-
-    fun mapCoinTopItemJsonContainerDtoToCoinInfoDto(
-        coinTopItemJsonContainerDto: CoinTopItemJsonContainerDto,
-        currency: Currency ): CoinInfoDto? {
-        val jsonObject = coinTopItemJsonContainerDto.json
-        jsonObject?.let {
-            return Gson().fromJson(
-                it.getAsJsonObject(currency.name),
-                CoinInfoDto::class.java)
-        }
-        return null
-    }
 }

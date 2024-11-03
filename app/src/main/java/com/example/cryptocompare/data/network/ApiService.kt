@@ -1,6 +1,6 @@
 package com.example.cryptocompare.data.network
 
-import com.example.cryptocompare.data.network.models.CoinInfoJsonContainerDto
+import com.example.cryptocompare.data.network.models.CoinInfoResponseDto
 import com.example.cryptocompare.data.network.models.CoinTopListResponseDto
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -14,11 +14,11 @@ interface ApiService {
     ): CoinTopListResponseDto
 
     @GET("pricemultifull")
-    suspend fun getFullPriceList(
+    suspend fun getFullCoinInfo(
         @Query(QUERY_PARAM_API_KEY) apiKey: String = "",
         @Query(QUERY_PARAM_FROM_SYMBOLS) fSyms: String,
         @Query(QUERY_PARAM_TO_SYMBOLS) tSyms: String = CURRENCY
-    ): CoinInfoJsonContainerDto
+    ): CoinInfoResponseDto
 
     companion object {
         private const val QUERY_PARAM_API_KEY = "api_key"
