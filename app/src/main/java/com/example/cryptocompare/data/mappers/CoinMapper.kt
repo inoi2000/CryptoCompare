@@ -3,8 +3,6 @@ package com.example.cryptocompare.data.mappers
 import com.example.cryptocompare.data.database.models.CoinInfoDbModel
 import com.example.cryptocompare.data.network.models.CoinInfoDto
 import com.example.cryptocompare.domain.entities.CoinInfo
-import com.example.cryptocompare.domain.entities.Currency
-import com.google.gson.Gson
 
 class CoinMapper {
     fun mapEntityToDbModel(entity: CoinInfo): CoinInfoDbModel =
