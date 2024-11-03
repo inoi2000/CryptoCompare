@@ -1,4 +1,4 @@
-package com.example.cryptocompare.data.api
+package com.example.cryptocompare.data.network
 
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory

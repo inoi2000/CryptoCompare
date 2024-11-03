@@ -1,6 +1,11 @@
-package com.example.cryptocompare.domain.entities
+package com.example.cryptocompare.data.database.models
 
-data class CoinInfo(
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "full_price_list")
+data class CoinInfoDbModel(
+    @PrimaryKey
     val name: String,
     val comparisonCurrency: String,
     val price: String,

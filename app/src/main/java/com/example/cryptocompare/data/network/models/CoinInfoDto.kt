@@ -1,36 +1,26 @@
-package com.example.cryptocompare.domain.entities
+package com.example.cryptocompare.data.network.models
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import com.example.cryptocompare.data.api.ApiFactory.BASE_IMAGE_URL
+import com.example.cryptocompare.data.network.ApiFactory.BASE_IMAGE_URL
 import com.example.cryptocompare.presentation.utils.convertTimestampToTime
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "full_price_list")
-data class CoinPriceInfo(
-    @SerializedName("TYPE")
-    @Expose
-    val type: String?,
-    @SerializedName("MARKET")
-    @Expose
-    val market: String?,
-    @PrimaryKey
+data class CoinInfoDto(
     @SerializedName("FROMSYMBOL")
     @Expose
-    val fromSymbol: String,
+    val name: String,
     @SerializedName("TOSYMBOL")
     @Expose
-    val toSymbol: String?,
-    @SerializedName("FLAGS")
-    @Expose
-    val flags: String?,
+    val comparisonCurrency: String,
     @SerializedName("PRICE")
     @Expose
-    val price: String?,
+    val price: String,
+    @SerializedName("IMAGEURL")
+    @Expose
+    val imageUrl: String,
     @SerializedName("LASTUPDATE")
     @Expose
-    val lastUpdate: Long?,
+    val lastUpdate: Long,
     @SerializedName("LASTVOLUME")
     @Expose
     val lastVolume: String?,
@@ -40,6 +30,15 @@ data class CoinPriceInfo(
     @SerializedName("LASTTRADEID")
     @Expose
     val lastTradeId: String?,
+    @SerializedName("FLAGS")
+    @Expose
+    val flags: String?,
+    @SerializedName("TYPE")
+    @Expose
+    val type: String?,
+    @SerializedName("MARKET")
+    @Expose
+    val market: String?,
     @SerializedName("VOLUMEDAY")
     @Expose
     val volumeDay: String?,
@@ -123,11 +122,8 @@ data class CoinPriceInfo(
     val totalTopTierVolume24Hour: String?,
     @SerializedName("TOTALTOPTIERVOLUME24HTO")
     @Expose
-    val totalTopTierVolume24HourTo: String?,
-    @SerializedName("IMAGEURL")
-    @Expose
-    val imageUrl: String?
-) {
+    val totalTopTierVolume24HourTo: String?
+)  {
     fun getFormattedTime(): String {
         return convertTimestampToTime(lastUpdate)
     }
