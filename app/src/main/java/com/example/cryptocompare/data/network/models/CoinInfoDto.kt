@@ -1,6 +1,5 @@
 package com.example.cryptocompare.data.network.models
 
-import androidx.room.PrimaryKey
 import com.example.cryptocompare.data.network.ApiFactory.BASE_IMAGE_URL
 import com.example.cryptocompare.presentation.utils.convertTimestampToTime
 import com.google.gson.annotations.Expose

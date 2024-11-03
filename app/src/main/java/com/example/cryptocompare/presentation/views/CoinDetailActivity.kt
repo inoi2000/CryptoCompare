@@ -2,12 +2,10 @@ package com.example.cryptocompare.presentation.views
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.Observer
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.cryptocompare.databinding.ActivityCoinDetailBinding
-import com.squareup.picasso.Picasso
 
 class CoinDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCoinDetailBinding
