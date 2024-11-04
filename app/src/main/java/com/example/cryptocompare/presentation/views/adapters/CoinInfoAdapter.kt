@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso
 class CoinInfoAdapter(
     private val context: Context,
     private val onCoinClick: (CoinInfo) -> Unit
-) : ListAdapter<CoinInfo, CoinInfoAdapter.CoinInfoViewHolder>(CoinDiffItemCallback()) {
+) : ListAdapter<CoinInfo, CoinInfoAdapter.CoinInfoViewHolder>(CoinDiffItemCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinInfoViewHolder {
         val inflater = LayoutInflater.from(parent.context)

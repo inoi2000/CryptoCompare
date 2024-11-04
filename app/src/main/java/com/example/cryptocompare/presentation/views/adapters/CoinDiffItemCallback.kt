@@ -3,7 +3,7 @@ package com.example.cryptocompare.presentation.views.adapters
 import androidx.recyclerview.widget.DiffUtil
 import com.example.cryptocompare.domain.entities.CoinInfo
 
-class CoinDiffItemCallback : DiffUtil.ItemCallback<CoinInfo>() {
+object CoinDiffItemCallback : DiffUtil.ItemCallback<CoinInfo>() {
     override fun areItemsTheSame(oldItem: CoinInfo, newItem: CoinInfo): Boolean =
         oldItem.name == newItem.name
 
