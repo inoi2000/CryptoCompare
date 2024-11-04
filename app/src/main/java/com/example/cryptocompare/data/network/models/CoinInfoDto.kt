@@ -1,7 +1,5 @@
 package com.example.cryptocompare.data.network.models
 
-import com.example.cryptocompare.data.network.ApiFactory.BASE_IMAGE_URL
-import com.example.cryptocompare.presentation.utils.convertTimestampToTime
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
@@ -123,12 +121,4 @@ data class CoinInfoDto(
     @SerializedName("TOTALTOPTIERVOLUME24HTO")
     @Expose
     val totalTopTierVolume24HourTo: String?
-)  {
-    fun getFormattedTime(): String {
-        return convertTimestampToTime(lastUpdate)
-    }
-
-    fun getFullImageUrl(): String {
-        return BASE_IMAGE_URL + imageUrl
-    }
-}
+)
