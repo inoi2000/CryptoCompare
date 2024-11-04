@@ -29,6 +29,7 @@ class CoinTopListFragment : Fragment() {
                 CoinTopListFragmentDirections.actionCoinTopListFragmentToCoinInfoFragment(it.name)
             findNavController().navigate(action)
         }
+        binding.rvCoinPriceList.itemAnimator = null
         binding.rvCoinPriceList.adapter = adapter
         viewModel.priceList.observe(viewLifecycleOwner) {
             adapter.submitList(it)
