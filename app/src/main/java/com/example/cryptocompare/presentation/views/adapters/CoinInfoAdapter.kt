@@ -12,10 +12,10 @@ import com.example.cryptocompare.R
 import com.example.cryptocompare.domain.entities.CoinInfo
 import com.squareup.picasso.Picasso
 
-class CoinInfoAdapter(private val context: Context) :
-    ListAdapter<CoinInfo, CoinInfoAdapter.CoinInfoViewHolder>(CoinDiffItemCallback()) {
-
-    var onCoinClickListener: OnCoinClickListener? = null
+class CoinInfoAdapter(
+    private val context: Context,
+    private val onCoinClick: (CoinInfo) -> Unit
+) : ListAdapter<CoinInfo, CoinInfoAdapter.CoinInfoViewHolder>(CoinDiffItemCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinInfoViewHolder {
         val view =
@@ -34,7 +34,7 @@ class CoinInfoAdapter(private val context: Context) :
                 holder.tvLastUpdate.text = String.format(lastUpdateTemplate, lastUpdate)
                 Picasso.get().load(imageUrl).into(holder.ivLogoCoin)
                 itemView.setOnClickListener {
-                    onCoinClickListener?.onCoinClick(this)
+                    onCoinClick(this)
                 }
             }
         }
@@ -45,9 +45,5 @@ class CoinInfoAdapter(private val context: Context) :
         val tvSymbols = itemView.findViewById<TextView>(R.id.tvSymbols)
         val tvPrice = itemView.findViewById<TextView>(R.id.tvPrice)
         val tvLastUpdate = itemView.findViewById<TextView>(R.id.tvLastUpdate)
-    }
-
-    interface OnCoinClickListener {
-        fun onCoinClick(coinPrice: CoinInfo)
     }
 }

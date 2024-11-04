@@ -17,15 +17,12 @@ class CoinPriceListActivity : AppCompatActivity() {
         binding = ActivityCoinPriceListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val adapter = CoinInfoAdapter(this)
-        adapter.onCoinClickListener = object : CoinInfoAdapter.OnCoinClickListener {
-            override fun onCoinClick(coinInfo: CoinInfo) {
-                val intent = CoinDetailActivity.newIntent(
-                    this@CoinPriceListActivity,
-                    coinInfo.name
-                )
-                startActivity(intent)
-            }
+        val adapter = CoinInfoAdapter(this) {
+            val intent = CoinDetailActivity.newIntent(
+                this@CoinPriceListActivity,
+                it.name
+            )
+            startActivity(intent)
         }
         binding.rvCoinPriceList.adapter = adapter
         viewModel = ViewModelProvider(this)[CoinViewModel::class.java]
