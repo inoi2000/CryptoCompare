@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/coinTopListFragment">
+
+    <fragment
+        android:id="@+id/coinTopListFragment"
+        android:name="com.example.cryptocompare.presentation.views.CoinTopListFragment"
+        android:label="CoinTopListFragment" >
+        <action
+            android:id="@+id/action_coinTopListFragment_to_coinInfoFragment"
+            app:destination="@id/coinInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/coinInfoFragment"
+        android:name="com.example.cryptocompare.presentation.views.CoinInfoFragment"
+        android:label="CoinInfoFragment" >
+        <argument
+            android:name="coinName"
+            app:argType="string" />
+    </fragment>
+</navigation>
