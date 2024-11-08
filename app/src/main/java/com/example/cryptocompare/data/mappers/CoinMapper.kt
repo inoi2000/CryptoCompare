@@ -1,8 +1,14 @@
 package com.example.cryptocompare.data.mappers
 
 import com.example.cryptocompare.data.database.models.CoinInfoDbModel
+import com.example.cryptocompare.data.network.ApiFactory.BASE_IMAGE_URL
 import com.example.cryptocompare.data.network.models.CoinInfoDto
 import com.example.cryptocompare.domain.entities.CoinInfo
+import java.sql.Timestamp
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+import java.util.TimeZone
 
 class CoinMapper {
     fun mapEntityToDbModel(entity: CoinInfo): CoinInfoDbModel =
@@ -96,8 +102,8 @@ class CoinMapper {
             name = dto.name,
             comparisonCurrency = dto.comparisonCurrency,
             price = dto.price,
-            imageUrl = dto.getFullImageUrl(),
-            lastUpdate = dto.getFormattedTime(),
+            imageUrl = BASE_IMAGE_URL + dto.imageUrl,
+            lastUpdate = convertTimestampToTime(dto.lastUpdate),
             lastVolume = dto.lastVolume,
             lastVolumeTo = dto.lastVolumeTo,
             lastTradeId = dto.lastTradeId,
@@ -133,4 +139,14 @@ class CoinMapper {
             totalTopTierVolume24Hour = dto.totalTopTierVolume24Hour,
             totalTopTierVolume24HourTo = dto.totalTopTierVolume24HourTo
         )
+
+    private fun convertTimestampToTime(timestamp: Long?): String {
+        if (timestamp == null) return ""
+        val stamp = Timestamp(timestamp * 1000)
+        val date = Date(stamp.time)
+        val pattern = "HH:mm:ss"
+        val sdf = SimpleDateFormat(pattern, Locale.getDefault())
+        sdf.timeZone = TimeZone.getDefault()
+        return sdf.format(date)
+    }
 }
