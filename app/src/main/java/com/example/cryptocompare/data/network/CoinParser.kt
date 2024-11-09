@@ -5,8 +5,9 @@ import com.example.cryptocompare.domain.entities.Currency
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
+import javax.inject.Inject
 
-class CoinParser {
+class CoinParser @Inject constructor() {
     companion object {
         private const val COIN_INFO_SERIALIZED_NAME = "RAW"
     }

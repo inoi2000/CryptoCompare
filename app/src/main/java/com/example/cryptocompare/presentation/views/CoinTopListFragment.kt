@@ -8,20 +8,32 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.cryptocompare.databinding.FragmentCoinTopListBinding
+import com.example.cryptocompare.presentation.CoinApp
+import com.example.cryptocompare.presentation.viewmodels.CoinViewModel
+import com.example.cryptocompare.presentation.viewmodels.CoinViewModelFactory
 import com.example.cryptocompare.presentation.views.adapters.CoinInfoAdapter
+import javax.inject.Inject
 
 class CoinTopListFragment : Fragment() {
     private var _binding: FragmentCoinTopListBinding? = null
     private val binding: FragmentCoinTopListBinding get() = _binding!!
 
+    private val component by lazy {
+        (requireActivity().application as CoinApp).component
+    }
+
+    @Inject
+    lateinit var viewModelFactory: CoinViewModelFactory
+
     private val viewModel: CoinViewModel by lazy {
-        ViewModelProvider(this)[CoinViewModel::class.java]
+        ViewModelProvider(this, viewModelFactory)[CoinViewModel::class.java]
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        component.inject(this)
         _binding = FragmentCoinTopListBinding.inflate(inflater, container, false)
 
         val adapter = CoinInfoAdapter(requireContext()) {
