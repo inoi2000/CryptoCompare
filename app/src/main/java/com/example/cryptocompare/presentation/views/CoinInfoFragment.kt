@@ -8,7 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.example.cryptocompare.databinding.FragmentCoinInfoBinding
+import com.example.cryptocompare.presentation.CoinApp
+import com.example.cryptocompare.presentation.viewmodels.CoinViewModel
+import com.example.cryptocompare.presentation.viewmodels.CoinViewModelFactory
 import com.squareup.picasso.Picasso
+import javax.inject.Inject
 
 class CoinInfoFragment : Fragment() {
     private var _binding: FragmentCoinInfoBinding? = null
@@ -16,14 +20,22 @@ class CoinInfoFragment : Fragment() {
 
     private val args by navArgs<CoinInfoFragmentArgs>()
 
+    private val component by lazy {
+        (requireActivity().application as CoinApp).component
+    }
+
+    @Inject
+    lateinit var viewModelFactory: CoinViewModelFactory
+
     private val viewModel: CoinViewModel by lazy {
-        ViewModelProvider(this)[CoinViewModel::class.java]
+        ViewModelProvider(this, viewModelFactory)[CoinViewModel::class.java]
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        component.inject(this)
         _binding = FragmentCoinInfoBinding.inflate(inflater, container, false)
         viewModel.getDetailInfo(args.coinName)
         viewModel.coinInfo.observe(viewLifecycleOwner) {

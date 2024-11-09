@@ -1,7 +1,7 @@
 package com.example.cryptocompare.data.mappers
 
 import com.example.cryptocompare.data.database.models.CoinInfoDbModel
-import com.example.cryptocompare.data.network.ApiFactory.BASE_IMAGE_URL
+import com.example.cryptocompare.data.network.ApiFactory.Companion.BASE_IMAGE_URL
 import com.example.cryptocompare.data.network.models.CoinInfoDto
 import com.example.cryptocompare.domain.entities.CoinInfo
 import java.sql.Timestamp
@@ -9,8 +9,9 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import java.util.TimeZone
+import javax.inject.Inject
 
-class CoinMapper {
+class CoinMapper @Inject constructor() {
     fun mapEntityToDbModel(entity: CoinInfo): CoinInfoDbModel =
         CoinInfoDbModel(
             name = entity.name,
